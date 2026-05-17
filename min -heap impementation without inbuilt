@@ -1,0 +1,36 @@
+class minheap:
+    def __init__(self):
+        self.arr=[]
+        self.cnt=0
+    def heapifyUp(self,arr,ind):
+        if(ind>0):
+            parent=(ind-1)//2
+            if(arr[ind]<arr[parent]):
+                arr[ind],arr[parent]=arr[parent],arr[ind]
+                self.heapifyUp(arr,parent)
+    def heapifyDown(self,arr,ind):
+        smallest=ind
+        lchild=2*ind+1
+        rchild=2*ind+2
+        if(lchild<len(arr) and arr[lchild]>arr[smallest]):
+            smallest=lchild
+        if(rchild<len(arr) and arr[rchild]>arr[smallest]):
+            smallest=rchild
+        if(smallest!=ind):
+            arr[ind],arr[smallest]=arr[smallest],arr[ind]
+            self.heapifyDown(arr,smallest)
+    def push(self,x:int):
+        self.arr.append(x)
+        self.heapifyUp(self.arr,self.cnt)
+        self.cnt+=1
+    def pop(self):
+        self.arr[0],self.arr[self.cnt-1]=self.arr[self.cnt-1],self.arr[0]
+        self.arr.pop()
+        self.heapifyDown(self.arr,0)
+        self.cnt-=1
+    def peak(self)-> int:
+        if(self.cnt==0):
+            return -1
+        return self.arr[0]
+    def size(self)-> int:
+        return self.cnt
