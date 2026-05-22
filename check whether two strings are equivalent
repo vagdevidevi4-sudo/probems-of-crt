@@ -1,0 +1,11 @@
+from collections import Counter
+word1=input()
+word2=input()
+c1=Counter(word1)
+c2=Counter(word2)
+for ch in "abcdefghijklmnopqrstuvwxyz":
+    if abs(c1[ch]-c2[ch])>3:
+        print("False")
+        break
+else:
+    print("True")
