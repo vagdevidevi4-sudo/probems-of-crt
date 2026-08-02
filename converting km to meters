@@ -1,0 +1,10 @@
+km=float(input("Enter distance in kilometers:"))
+meters=1000*km
+print("Distance in meters:",meters)
+
+
+using finction
+def km_to_meters(km):
+    return km*1000
+km=float(input("Enter distance in kilometers:"))
+print("Distance in meters:",km_to_meters(km))
